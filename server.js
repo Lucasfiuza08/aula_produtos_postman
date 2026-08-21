@@ -2,9 +2,9 @@ const express = require ('express')
 const app = express()
 
 const produtos = [
-    {id: 1, descricao: "Banana Prata", preco: 8.99},
-    {id: 2, descricao: "Leite integral 1L", preco: 2.99},
-    {id: 3, descricao: "Paçoca", preco: 1.99}
+    {id: 1, descricao: "Banana Prata", preco: 8.99, categoria: "frutas", estoque: 21},
+    {id: 2, descricao: "Leite integral 1L", preco: 2.99, categoria: "leites", estoque: 16},
+    {id: 3, descricao: "Paçoca", preco: 1.99, categoria: "doçes", estoque: 10}
 ]
 
 app.get ('/produtos', (req, res) => {
