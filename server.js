@@ -10,6 +10,27 @@ const produtos = [
 app.get ('/produtos', (req, res) => {
     res.json (produtos)
 })
+
+app.put ('/produtos/:id', (req, res)=> {
+    const id = parseInt(req.params.id);
+    const index = produtos.findIndex(p => p.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({ erro: "Produto não encontrado" });
+    }
+
+    const { descricao, preco, categoria, estoque } = req.body;
+
+    produtos[index] = {
+        id,
+        descricao,
+        preco,
+        categoria,
+        estoque
+    };
+
+    res.json(produtos[index]);
+})
 app.delete('/produtos/:id', (req, res) => {
     const id = parseInt (req.params.id);
 
