@@ -31,6 +31,17 @@ app.put ('/produtos/:id', (req, res)=> {
 
     res.json(produtos[index]);
 })
+
+app.post('/produtos', (req, res) => {
+    const { descricao, preco, categoria, estoque } = req.body;
+    const novoId = produtos.length > 0 ? produtos[produtos.length - 1].id + 1 : 1;
+
+    const novoProduto = { id: novoId, descricao, preco, categoria, estoque };
+    produtos.push(novoProduto);
+
+    res.status(201).json(novoProduto);
+});
+
 app.delete('/produtos/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const index = produtos.findIndex(produto => produto.id === id);
