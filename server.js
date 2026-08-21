@@ -32,19 +32,17 @@ app.put ('/produtos/:id', (req, res)=> {
     res.json(produtos[index]);
 })
 app.delete('/produtos/:id', (req, res) => {
-    const id = parseInt (req.params.id);
+    const id = parseInt(req.params.id);
+    const index = produtos.findIndex(produto => produto.id === id);
 
-    const index = produtos.findIndex (produto => produto.id ===id)
-    
-    if (index != -1)[
-        produtos.slice(index, 1)
-    ]
-    else[
-        res.status(404).json("Id não foi encontrado")
-    ]
+    if (index === -1) {
+        return res.status(404).json({ erro: "Id não foi encontrado" });
+    }
+    produtos.splice(index, 1);
 
-    res.json (produtos)
-})
-app.listen (3000, (e) => {
-    console.log ('Servidor ouvindo em http://localhost:3000')
-})
+    res.status(204).send();
+});
+
+app.listen(3000, () => {
+    console.log('Servidor ouvindo em http://localhost:3000');
+});
