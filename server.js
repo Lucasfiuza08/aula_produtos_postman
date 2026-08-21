@@ -22,7 +22,7 @@ app.put ('/produtos/:id', (req, res)=> {
     const { descricao, preco, categoria, estoque } = req.body;
 
     produtos[index] = {
-        id: produtos.lenth > 0 ? produtos[produtos.lenth-1].id +1 : 1,
+        id,
         descricao,
         preco,
         categoria,
