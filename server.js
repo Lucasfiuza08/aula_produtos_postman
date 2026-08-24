@@ -11,7 +11,7 @@ app.get ('/produtos', (req, res) => {
     res.json (produtos)
 })
 
-app.put ('/produtos/:id', (req, res)=> {
+app.put ('/produtos/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const index = produtos.findIndex(p => p.id === id);
 
@@ -34,7 +34,7 @@ app.put ('/produtos/:id', (req, res)=> {
 
 app.post('/produtos', (req, res) => {
     const { descricao, preco, categoria, estoque } = req.body;
-    const novoId = produtos.length > 0 ? produtos[produtos.length - 1].id + 1 : 1;
+    const novoId = produtos.length > 0 ? -1 : 1;
 
     const novoProduto = { id: novoId, descricao, preco, categoria, estoque };
     produtos.push(novoProduto);
