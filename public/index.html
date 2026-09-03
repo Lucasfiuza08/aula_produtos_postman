@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supermercado</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <h2>Acessar produtos</h2>
     <table id="tabela-produtos">
         <thead>
             <tr>
@@ -23,10 +25,12 @@
     </table>
     <form id="form-produto">
         <input type="text" id="descricao">
-        <input type="text" id="preço" step="0.01">
+        <input type="number" id="preco" step="0.01">
         <input type="text" id="categoria">
-        <input type="text" id="estoque ">
-
+        <input type="number" id="estoque">
+        <button id="salvar-butao">Salvar</button>
     </form>
+    
+    <script src="js/app.js"></script>
 </body>
 </html>
