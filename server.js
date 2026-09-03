@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
+app.use(express.static("public"));
 
 const produtos = [
     { id: 1, descricao: "Banana Prata", preco: 8.99, categoria: "Frutas", estoque: 21 },
