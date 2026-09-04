@@ -1,3 +1,5 @@
+let idEmEdicao = null;
+
 async function carregarProdutos() {
     const resposta = await fetch("/produtos");    
     const produtos = await resposta.json();
