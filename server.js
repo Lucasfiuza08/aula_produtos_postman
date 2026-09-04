@@ -65,3 +65,11 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+const users = [
+    {id: 1, user: "lucasfiuza", senha: 123}
+];
+app.post('/login', (req, res) => {
+    const { user, senha } = req.body;
+    user.find()
+});
