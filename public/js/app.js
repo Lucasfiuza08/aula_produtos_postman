@@ -23,3 +23,22 @@ async function carregarProdutos() {
     });
 }
 carregarProdutos();
+
+async function salvarProduto() {
+    const descricao = document.getElementById("descricao").value;
+    const preco = document.getElementById("preco").value;
+    const categoria = document.getElementById("categoria").value;
+    const estoque = document.getElementById("estoque").value;
+    const novoProduto = {
+        descricao,
+        preco,
+        categoria,
+        estoque
+    };
+        await fetch("/produtos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(produto)
+    });
+    
+}
