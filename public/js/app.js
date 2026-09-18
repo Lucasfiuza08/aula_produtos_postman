@@ -1,11 +1,22 @@
 let idEmEdicao = null;
 
+async function verificarLogin() {
+    const resposta = await fetch("/usuario");
+
+    if (resposta.status === 401) {
+        window.location.href = "/login.html";
+        return;
+    }
+
+    const usuario = await resposta.json();
+    document.getElementById("usuario-logado").textContent = `Olá, ${usuario.nome}`;
+}
+
 async function carregarProdutos() {
-    const resposta = await fetch("/produtos");    
+    const resposta = await fetch("/produtos");
     const produtos = await resposta.json();
 
-
-    const  corpoTabela = document.getElementById("tabela-corpo");
+    const corpoTabela = document.getElementById("tabela-corpo");
     corpoTabela.innerHTML = " ";
     produtos.forEach((produto) => {
         const linha = `
@@ -21,10 +32,9 @@ async function carregarProdutos() {
                     </td>
                 </tr>    
         `
-    corpoTabela.innerHTML += linha;
+        corpoTabela.innerHTML += linha;
     });
 }
-carregarProdutos();
 
 async function salvarProduto() {
     const descricao = document.getElementById("descricao").value;
@@ -68,12 +78,4 @@ async function editarProduto(id) {
     idEmEdicao = id;
 }
 
-async function excluirProduto(id) {
-    await fetch(`/produtos/${id}`, {
-        method: "DELETE"
-    });
-
-    carregarProdutos();
-}
-
-carregarProdutos();
+async function

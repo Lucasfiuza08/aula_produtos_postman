@@ -77,7 +77,9 @@ app.post('/login', (req, res) => {
 
     // cria o cookie "usuario" no navegador de quem fez a requisição.
     res.cookie("usuario", usuarioEncontrado.id.toString(), {
-        httpOnly: false
+        httpOnly: true,
+        sameSite: "strict",
+        secure: false
     });
 
     res.json({ mensagem: "Login realizado com sucesso" });

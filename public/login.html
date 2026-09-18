@@ -8,15 +8,14 @@
 </head>
 <body>
     <h2>Faça seu login</h2>
-    <article>
-        <div id="logar">
-            <input id="email" type="text">
-            <input id="senha" type="text">
-        </div>
-        <div>
-            <button id="enviarDado">Entrar</button>
-        </div>
-    </article>
+        <form id="loginForm">
+            <label>Login</label>
+            <input type="text" id="login">
+            <label>Senha</label>
+            <input type="password" id="senha">
+            <button type="submit">Entrar</button>
+        </form>
+<p id="mensagem"></p>
     <script src="js/login.js"></script>
 </body>
 </html>
