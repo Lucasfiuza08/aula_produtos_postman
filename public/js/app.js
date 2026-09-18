@@ -78,4 +78,18 @@ async function editarProduto(id) {
     idEmEdicao = id;
 }
 
-async function
+async function excluirProduto(id) {
+    await fetch(`/produtos/${id}`, {
+        method: "DELETE"
+    });
+
+    carregarProdutos();
+}
+
+document.getElementById("logout").addEventListener("click", async () => {
+    await fetch("/logout", { method: "POST" });
+    window.location.href = "/login.html";
+});
+
+verificarLogin();
+carregarProdutos();
