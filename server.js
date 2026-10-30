@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const cookieParser = require('cookie-parser'); // middleware que lê os cookies enviados pelo navegador e os coloca em req.cookies
 
 const app = express();
 
+app.use(cors());                // libera o acesso do front-end (React) de outra origem
 app.use(express.json());        // permite ler req.body quando o cliente manda JSON
 app.use(cookieParser());        // ativa req.cookies
 app.use(express.static("public")); // serve os arquivos da pasta public (html, css, js do front)
